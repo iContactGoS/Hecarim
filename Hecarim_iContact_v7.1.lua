@@ -43,7 +43,7 @@ HecarimMenu.Drawings:Boolean("DW", "Draw W Range", true)
 HecarimMenu.Drawings:Boolean("DR", "Draw R Range", true)
 
 
-
+OnTick(function (myHero)
 
 	if Mix:Mode() == "Harass" then
         if HecarimMenu.Harass.Q:Value() and Ready(_Q) and ValidTarget(target, 350) then
