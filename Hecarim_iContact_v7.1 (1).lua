@@ -1,4 +1,3 @@
-local ver = "0.01"
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
  require('MixLib')
@@ -11,8 +10,6 @@ if GetObjectName(GetMyHero()) ~= "Hecarim" then return end
 
 require("DamageLib")
 
-
-local SetDCP, SkinChanger = 0
 
 local HecarimMenu = Menu("Hecarim - iContact", "Hecarim - iContact")
 
@@ -44,17 +41,6 @@ HecarimMenu:SubMenu("Drawings", "Drawings")
 HecarimMenu.Drawings:Boolean("DQ", "Draw Q Range", true)
 HecarimMenu.Drawings:Boolean("DW", "Draw W Range", true)
 HecarimMenu.Drawings:Boolean("DR", "Draw R Range", true)
-
-HecarimMenu:SubMenu("SkinChanger", "SkinChanger")
-HecarimMenu.SkinChanger:Boolean("Skin", "UseSkinChanger", true)
-HecarimMenu.SkinChanger:Slider("SelectedSkin", "Select A Skin:", 1, 0, 5, 1, function(SetDCP) HeroSkinChanger(myHero, SetDCP)  end, true)
-
-OnTick(function (myHero)
-	local target = GetCurrentTarget()
-    local YGB = GetItemSlot(myHero, 3142)
-	local RHydra = GetItemSlot(myHero, 3074)
-	local Tiamat = GetItemSlot(myHero, 3077)
-    local Gunblade = GetItemSlot(myHero, 3146)
 
 
 
@@ -126,15 +112,6 @@ OnDraw(function (myHero)
 		DrawCircle(GetOrigin(myHero), 1000, 0, 200, GoS.Yellow)
 	end
 end)
-
-local function SkinChanger()
-	if HecarimMenu.SkinChanger.UseSkinChanger:Value() then
-		if SetDCP >= 0 and SetDCP ~= GlobalSkin then
-			HeroSkinChanger(myHero, SetDCP)
-			GlobalSkin = SetDCP
-		end
-    end
-end
 
 
 print('Hecarim - iContact Version 7.1! - Have Fun!')
