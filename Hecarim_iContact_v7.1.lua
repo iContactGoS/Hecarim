@@ -1,15 +1,5 @@
 require("DamageLib")
 
-function AutoUpdate(data)
-    if tonumber(data) > tonumber(ver) then
-        PrintChat('<font color = "#00FFFF">New version found! ' .. data)
-        PrintChat('<font color = "#00FFFF">Downloading update, please wait...')
-        DownloadFileAsync('https://raw.githubusercontent.com/iContactGoS/Hecarim/master/Hecarim_iContact_v7.1.lua', SCRIPT_PATH .. 'Hecarim_iContact_v7.1.lua', function() PrintChat('Update Complete, please 2x F6!') return end)
-    else
-        PrintChat('<font color = "#01DF01">No updates found!')
-    end
-end
-
 if FileExist(COMMON_PATH.."MixLib.lua") then
  require('MixLib')
 else
