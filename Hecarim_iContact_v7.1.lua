@@ -10,19 +10,6 @@ if GetObjectName(GetMyHero()) ~= "Hecarim" then return end
 
 require("DamageLib")
 
-
-function AutoUpdate(data)
-    if tonumber(data) > tonumber(7.2) then
-        PrintChat('New version found!')
-        PrintChat('Downloading update, please wait...')
-        DownloadFileAsync('https://raw.githubusercontent.com/iContactGoS/Hecarim/master/Hecarim_iContact_v7.1.lua', SCRIPT_PATH .. 'Hecarim_iContact_v7.1.lua', function() PrintChat('Update Complete, please 2x F6!') return end)
-    else
-        PrintChat('No updates found!')
-    end
-end
-
-GetWebResultAsync("https://raw.githubusercontent.com/iContactGoS/Hecarim/master/Hecarim.update", AutoUpdate)
-
 local HecarimMenu = Menu("Hecarim - iContact", "Hecarim - iContact")
 
 HecarimMenu:SubMenu("Combo", "Combo")
