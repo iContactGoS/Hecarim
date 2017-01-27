@@ -12,7 +12,7 @@ require("DamageLib")
 
 
 function AutoUpdate(data)
-    if tonumber(data) > tonumber(ver) then
+    if tonumber(data) > tonumber(7.2) then
         PrintChat('New version found! ' .. data)
         PrintChat('Downloading update, please wait...')
         DownloadFileAsync('https://raw.githubusercontent.com/iContactGoS/Hecarim/master/Hecarim_iContact_v7.1.lua', SCRIPT_PATH .. 'Hecarim_iContact_v7.1.lua', function() PrintChat('Update Complete, please 2x F6!') return end)
