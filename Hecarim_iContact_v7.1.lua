@@ -21,6 +21,7 @@ function AutoUpdate(data)
     end
 end
 
+GetWebResultAsync("https://raw.githubusercontent.com/iContactGoS/Hecarim/master/Hecarim.update", AutoUpdate)
 
 local HecarimMenu = Menu("Hecarim - iContact", "Hecarim - iContact")
 
