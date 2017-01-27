@@ -1,4 +1,3 @@
-require("DamageLib")
 
 if FileExist(COMMON_PATH.."MixLib.lua") then
  require('MixLib')
@@ -7,8 +6,21 @@ else
  DownloadFileAsync("https://raw.githubusercontent.com/VTNEETS/NEET-Scripts/master/MixLib.lua", COMMON_PATH.."MixLib.lua", function() PrintChat("Downloaded MixLib. Please 2x F6!") return end)
 end
 
-
 if GetObjectName(GetMyHero()) ~= "Hecarim" then return end
+
+require("DamageLib")
+
+
+function AutoUpdate(data)
+    if tonumber(data) > tonumber(ver) then
+        PrintChat('New version found! ' .. data)
+        PrintChat('Downloading update, please wait...')
+        DownloadFileAsync('https://raw.githubusercontent.com/iContactGoS/Hecarim/master/Hecarim_iContact_v7.1.lua', SCRIPT_PATH .. 'Hecarim_iContact_v7.1.lua', function() PrintChat('Update Complete, please 2x F6!') return end)
+    else
+        PrintChat('No updates found!')
+    end
+end
+
 
 local HecarimMenu = Menu("Hecarim - iContact", "Hecarim - iContact")
 
@@ -33,8 +45,8 @@ HecarimMenu.Harass:Boolean("W", "Use W", true)
 
 HecarimMenu:SubMenu("KillSteal", "KillSteal")
 HecarimMenu.KillSteal:Boolean("Q", "KS w Q", true)
-HecarimMenu.KillSteal:Boolean("E", "KS w E", true)	-- Meh :S
-
+HecarimMenu.KillSteal:Boolean("E", "KS w E", true)
+HecarimMenu.KillSteal:Boolean("R", "KS w R", true)
 
 HecarimMenu:SubMenu("Drawings", "Drawings")
 HecarimMenu.Drawings:Boolean("DQ", "Draw Q Range", true)
@@ -87,7 +99,7 @@ OnTick(function (myHero)
     if Mix:Mode() == "LaneClear" then
 		for _,closeminion in pairs(minionManager.objects) do
 	        if HecarimMenu.LaneClear.Q:Value() and Ready(_Q) and ValidTarget(closeminion, 350) then
-				CastSpell(closeminion, _Q)
+				CastSpell(_Q)
 			end
             if HecarimMenu.LaneClear.W:Value() and Ready(_W) and ValidTarget(closeminion, 525) then
 				CastSpell(_W)
